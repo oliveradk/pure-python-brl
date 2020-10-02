@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="pure-python-brl-oliveradk", # Replace with your own username
+    name="pure-python-brl", # Replace with your own username
     version="0.0.1",
     author="Oliver Daniels-Koch",
     description="pure python bayesian rule list classifier",
