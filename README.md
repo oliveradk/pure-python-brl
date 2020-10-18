@@ -1,3 +1,5 @@
+Original code from mmoran0032 https://github.com/mmoran0032/scikit-brl. Modified for specific project
+
 Highly interpretable, sklearn-compatible classifier based on decision rules
 ===============
 
