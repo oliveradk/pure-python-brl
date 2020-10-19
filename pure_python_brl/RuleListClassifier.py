@@ -263,7 +263,7 @@ class RuleListClassifier(BaseEstimator):
     def score(self, X, y, sample_weight=None):
         return sklearn.metrics.accuracy_score(y, self.predict(X), sample_weight=sample_weight)
     
-    def list_same(ls):
+    def list_same(self, ls):
         arr = np.array(ls)
         arr = arr.flatten()
         return len(set(arr)) == 1
