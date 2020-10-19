@@ -132,8 +132,8 @@ class RuleListClassifier(BaseEstimator):
         data_neg = [x for i,x in enumerate(data) if y[i]==1]
         assert len(data_pos)+len(data_neg) == len(data)
         try:
-            itemsets = [r[0] for r in fpgrowth(data_pos,supp=self.minsupport,zmin=self._zmin,zmax=self.maxcardinality)]
-            itemsets.extend([r[0] for r in fpgrowth(data_neg,supp=self.minsupport,zmin=self._zmin,zmax=self.maxcardinality)])
+            itemsets = [r[0] for r in fpgrowth(data_pos,supp=self.minsupport,zmin=self._zmin,zmax=self.maxcardinality)] if not self.list_same(data_pos) else [tuple(data_pos[0])]
+            itemsets.extend([r[0] for r in fpgrowth(data_neg,supp=self.minsupport,zmin=self._zmin,zmax=self.maxcardinality)] if not self.list_same(data_neg) else [tuple(data_neg[0])]) 
         except TypeError:
             itemsets = [r[0] for r in fpgrowth(data_pos,supp=self.minsupport,min=self._zmin,max=self.maxcardinality)]
             itemsets.extend([r[0] for r in fpgrowth(data_neg,supp=self.minsupport,min=self._zmin,max=self.maxcardinality)])
@@ -262,6 +262,11 @@ class RuleListClassifier(BaseEstimator):
     
     def score(self, X, y, sample_weight=None):
         return sklearn.metrics.accuracy_score(y, self.predict(X), sample_weight=sample_weight)
+    
+    def list_same(ls):
+        arr = np.array(ls)
+        arr = arr.flatten()
+        return len(set(arr)) == 1
     
 if __name__ == "__main__":
     from examples.demo import *
