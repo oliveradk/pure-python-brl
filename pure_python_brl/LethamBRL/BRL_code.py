@@ -506,7 +506,7 @@ def proposal(d_t,R_t,X,Y,alpha):
     if u < sum(move_probs[:1]):
         #This is an on-list move.
         step = 'move'
-        [indx1,indx2] = random.permutation(range(len(d_t[:R_t])))[:2] if len(d_t[:R_t]) > 1 else 0,0 #value error if there are no on list entries
+        [indx1,indx2] = random.permutation(range(len(d_t[:R_t])))[:2] if len(d_t[:R_t]) > 1 else array([0,0]) #value error if there are no on list entries
         #print 'move',indx1,indx2
         Jratio = Jratios[0] #ratio of move/move probabilities is 1.
     elif u < sum(move_probs[:2]):
