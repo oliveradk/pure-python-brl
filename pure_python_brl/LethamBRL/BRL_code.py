@@ -569,6 +569,7 @@ def fn_logliklihood(d_t,N_t,R_t,alpha):
 
 #Compute log prior
 def fn_logprior(d_t,R_t,logalpha_pmf,logbeta_pmf,maxlhs,beta_Z,nruleslen,lhs_len):
+    import ipdb; ipdb.set_trace()
     #The prior will be _proportional_ to this -> we drop the normalization for alpha
     #beta_Z is the normalization for beta, except the terms that need to be dropped due to running out of rules.
     #log p(d_star) = log \alpha(m|lbda) + sum_{i=1...m} log beta(l_i | eta) + log gamma(r_i | l_i)
