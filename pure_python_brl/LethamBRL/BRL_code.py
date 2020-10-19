@@ -504,15 +504,15 @@ def proposal(d_t,R_t,X,Y,alpha):
     #First we will find the indicies for the insertion-deletion. indx1 is the item to be moved, indx2 is the new location
     if u < sum(move_probs[:1]):
         #This is an on-list move.
-        step = 'move'
-        [indx1,indx2] = random.permutation(range(len(d_t[:R_t])))[:2] #value error if there are no on list entries
+        #step = 'move'
+        #[indx1,indx2] = random.permutation(range(len(d_t[:R_t])))[:2] #value error if there are no on list entries
         #print 'move',indx1,indx2
         Jratio = Jratios[0] #ratio of move/move probabilities is 1.
     elif u < sum(move_probs[:2]):
         #this is an add
-        step = 'add'
-        indx1 = R_t+1+random.randint(0,len(d_t[R_t+1:])) #this will throw ValueError if there are no off list entries
-        indx2 = random.randint(0,len(d_t[:R_t+1])) #this one will always work
+        #step = 'add'
+        #indx1 = R_t+1+random.randint(0,len(d_t[R_t+1:])) #this will throw ValueError if there are no off list entries
+        #indx2 = random.randint(0,len(d_t[:R_t+1])) #this one will always work
         #print 'add',indx1,indx2
         #the probability of going from d_star back to d_t is the probability of the corresponding cut.
         #p(d*->d|cut) = 1/|d*| = 1/(|d|+1) = 1./float(R_t+1)
@@ -521,9 +521,9 @@ def proposal(d_t,R_t,X,Y,alpha):
         R_star+=1
     elif u < sum(move_probs[:3]):
         #this is a cut
-        step = 'cut'
-        indx1 = random.randint(0,len(d_t[:R_t])) #this will throw ValueError if there are no on list entries
-        indx2 = R_t+random.randint(0,len(d_t[R_t:])) #this one will always work
+        #step = 'cut'
+        #indx1 = random.randint(0,len(d_t[:R_t])) #this will throw ValueError if there are no on list entries
+        #indx2 = R_t+random.randint(0,len(d_t[R_t:])) #this one will always work
         #print 'cut',indx1,indx2
         #the probability of going from d_star back to d_t is the probability of the corresponding add.
         #p(d*->d|add) = 1/((|a|-|d*|)(|d*|+1)) = 1/((|a|-|d|+1)(|d|))
