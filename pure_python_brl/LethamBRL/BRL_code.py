@@ -512,7 +512,7 @@ def proposal(d_t,R_t,X,Y,alpha):
         #this is an add
         #step = 'add'
         indx1 = R_t+1+random.randint(0,len(d_t[R_t+1:])) if len(d_t[R_t+1:]) > 0 else 0 #this will throw ValueError if there are no off list entries
-        indx2 = random.randint(0,len(d_t[:R_t+1])) if if len(d_t[R_t+1:]) > 0 else 0 #this one will always work
+        indx2 = random.randint(0,len(d_t[:R_t+1])) if len(d_t[R_t+1:]) > 0 else 0 #this one will always work
         #print 'add',indx1,indx2
         #the probability of going from d_star back to d_t is the probability of the corresponding cut.
         #p(d*->d|cut) = 1/|d*| = 1/(|d|+1) = 1./float(R_t+1)
