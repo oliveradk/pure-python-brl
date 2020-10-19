@@ -462,6 +462,7 @@ def initialize_d(X,Y,lbda,eta,lhs_len,maxlhs,nruleslen):
 
 #Propose a new d_star
 def proposal(d_t,R_t,X,Y,alpha):
+    import ipdb; ipdb.set_trace()
     d_star = list(d_t)
     R_star = int(R_t)
     move_probs_default = array([0.3333333333,0.3333333333,0.3333333333]) #We begin with these as the move probabilities, but will renormalize as needed if certain moves are unavailable.
